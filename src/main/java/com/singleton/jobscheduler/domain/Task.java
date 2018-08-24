@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,6 +19,7 @@ import org.hibernate.annotations.TypeDef;
 
 @Data
 @Entity
+@Builder
 @TypeDef(name = "job_status", typeClass = PostgreSQLEnumType.class)
 public class Task {
 
