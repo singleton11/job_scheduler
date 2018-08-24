@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Builder;
@@ -35,4 +36,9 @@ public class Task {
   @Enumerated(EnumType.STRING)
   @Type(type = "job_status")
   private JobStatus status;
+
+  @PreUpdate
+  public void save() {
+    timestamp = new Date();
+  }
 }
