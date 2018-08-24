@@ -15,6 +15,8 @@ public class TaskController {
 
   @PostMapping("task")
   public ResponseEntity<Task> createTask() {
-    return ResponseEntity.accepted().body(taskService.createTask());
+    Task task = taskService.createTask();
+    taskService.runUpdater(task);
+    return ResponseEntity.accepted().body(task);
   }
 }
