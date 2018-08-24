@@ -17,8 +17,8 @@ public class ApplicationConfiguration {
   @Bean
   public Executor taskExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-    executor.setCorePoolSize(2);
-    executor.setMaxPoolSize(2);
+    executor.setCorePoolSize(20);
+    executor.setMaxPoolSize(40);
     executor.setQueueCapacity(500);
     executor.setThreadNamePrefix("Task-Updater-");
     executor.initialize();
@@ -28,7 +28,7 @@ public class ApplicationConfiguration {
   @Bean
   public TaskScheduler taskScheduler() {
     ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-    scheduler.setPoolSize(5);
+    scheduler.setPoolSize(20);
     scheduler.setThreadNamePrefix("Task-Updater-Scheduling-Service-");
     return scheduler;
   }
