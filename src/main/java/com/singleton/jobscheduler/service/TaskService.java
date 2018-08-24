@@ -5,6 +5,8 @@ import com.singleton.jobscheduler.domain.Task;
 import com.singleton.jobscheduler.repository.TaskRepository;
 import java.time.OffsetDateTime;
 import java.util.Date;
+import java.util.Optional;
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.TaskScheduler;
@@ -34,5 +36,9 @@ public class TaskService {
       taskRepository.save(task);
       log.info("Task {} finished", task.getGuid());
     }, new Date(OffsetDateTime.now().plusMinutes(2).toInstant().toEpochMilli()));
+  }
+
+  public Optional<Task> getTask(UUID guid) {
+    return taskRepository.findById(guid);
   }
 }
