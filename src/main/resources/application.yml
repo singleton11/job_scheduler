@@ -3,3 +3,10 @@ spring:
     url: jdbc:postgresql://postgres/job_scheduler
     username: job_scheduler
     password: job_scheduler
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
