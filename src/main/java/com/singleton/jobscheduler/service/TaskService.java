@@ -27,18 +27,21 @@ public class TaskService {
 
   @Async
   public void runUpdater(Task task) {
-    task.setStatus(JobStatus.RUNNING);
-    taskRepository.save(task);
+    updateStatus(task, JobStatus.RUNNING);
     log.info("Task {} run", task.getGuid());
 
     taskScheduler.schedule(() -> {
-      task.setStatus(JobStatus.FINISHED);
-      taskRepository.save(task);
+      updateStatus(task, JobStatus.FINISHED);
       log.info("Task {} finished", task.getGuid());
     }, new Date(OffsetDateTime.now().plusMinutes(2).toInstant().toEpochMilli()));
   }
 
   public Optional<Task> getTask(UUID guid) {
     return taskRepository.findById(guid);
+  }
+
+  private void updateStatus(Task task, JobStatus finished) {
+    task.setStatus(finished);
+    taskRepository.save(task);
   }
 }
