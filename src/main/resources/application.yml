@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres/job_scheduler
-    username: job_scheduler
-    password: job_scheduler
+    url: ${DB_URL:jdbc:postgresql://postgres/job_scheduler}
+    username: ${DB_USER:job_scheduler}
+    password: ${DB_PASSWORD:job_scheduler}
 
   jpa:
     properties:
