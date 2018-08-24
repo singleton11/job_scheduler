@@ -55,7 +55,7 @@ public class TaskServiceTest {
     taskService.runUpdater(task);
 
     verify(taskScheduler, times(1)).schedule(any(),
-                                                                    dateArgumentCaptor.capture());
+                                             dateArgumentCaptor.capture());
     assertTrue(LongStream.range(119000, 120000)
                          .boxed()
                          .collect(Collectors.toSet())
