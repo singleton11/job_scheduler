@@ -50,7 +50,8 @@ Response code: 200; Time: 26ms; Content length: 64 bytes
 * Clone repository: `git clone https://github.com/singleton11/job_scheduler`
 * Ensure you have PostgreSQL server which listens 5432 port (see `docker-compose.yml` for 
   credentials) or just run `docker-compose up`. If you want your own credentials for DB connection, 
-  just create application-<profileName>.yml and run spring boot app with your <profileName> 
+  just create application-<profileName>.yml and run spring boot app with your <profileName> or you 
+  can define environment variables: `DB_URL`, `DB_USER` and `DB_PASSWORD`
 * Run spring boot configuration in your IDE or `mvn spring-boot:run`
 
 ### Run tests
